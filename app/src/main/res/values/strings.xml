@@ -3,4 +3,7 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="recipier">Recipier</string>
+    <string name="logo_description">Recipier logo</string>
+    <string name="splash_page_description">Recipier splash page showing food, tomatoes, spaguetti, a bowl with passata and a white spoon. Recipier logo.</string>
 </resources>
