@@ -1,4 +1,4 @@
-package com.amartgar.recipier.ui.dashboard
+package com.amartgar.recipier.ui.main.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

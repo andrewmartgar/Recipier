@@ -1,4 +1,4 @@
-package com.amartgar.recipier
+package com.amartgar.recipier.ui.main.view.activities
 
 import android.content.Intent
 import android.os.Build
@@ -10,18 +10,19 @@ import android.view.WindowManager
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
+import com.amartgar.recipier.R
 import com.amartgar.recipier.databinding.ActivitySplashBinding
 
 class SplashActivity : AppCompatActivity() {
-    private lateinit var binding: ActivitySplashBinding
+    private lateinit var mBinding: ActivitySplashBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySplashBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        mBinding = ActivitySplashBinding.inflate(layoutInflater)
+        setContentView(mBinding.root)
 
         val splashAnimation = AnimationUtils.loadAnimation(this, R.anim.anim_splash)
-        binding.ivBackgroundSplash.animation = splashAnimation
+        mBinding.ivBackgroundSplash.animation = splashAnimation
 
         splashAnimation.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationStart(animation: Animation?) {

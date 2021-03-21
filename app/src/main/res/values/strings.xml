@@ -1,9 +1,28 @@
 <resources>
     <string name="app_name">Recipier</string>
-    <string name="title_home">Home</string>
+    <string name="title_all_recipes">Recipes</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="recipier">Recipier</string>
     <string name="logo_description">Recipier logo</string>
     <string name="splash_page_description">Recipier splash page showing food, tomatoes, spaguetti, a bowl with passata and a white spoon. Recipier logo.</string>
+    <string name="add_a_new_recipe">Add a new recipe</string>
+    <string name="icon_to_add_a_photo">Icon to add a photo</string>
+    <string name="main_photo_of_the_recipe">Photo of the recipe</string>
+    <string name="add_recipe_title">Recipe Title</string>
+    <string name="add_recipe_type">Recipe Type</string>
+    <string name="add_recipe_category">Category</string>
+    <string name="add_recipe_ingredients">Ingredients</string>
+    <string name="add_recipe_cooking_time_in_minutes">Cooking Time in minutes</string>
+    <string name="add_recipe_direction_to_cook">Direction to Cook</string>
+    <string name="add_recipe_button_text">ADD RECIPE</string>
+    <string name="title_select_image_from">SELECT IMAGE FROM</string>
+    <string name="dialog_image_selection_camera">CAMERA</string>
+    <string name="dialog_image_selection_gallery">GALLERY</string>
+    <string name="got_camera_permissions">You have camera permissions now.</string>
+    <string name="permissions_off_dialog_text">It looks like you have turn off permissions required for this feature. It can be enabled under Application Settings.</string>
+    <string name="go_to_settings">GO TO SETTINGS</string>
+    <string name="cancel">CANCEL</string>
+    <string name="you_got_gallery_permissions">You got Gallery permissions</string>
+    <string name="permission_to_gallery_denied">You have denied the storage permission to select the image.</string>
 </resources>

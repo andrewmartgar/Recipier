@@ -1,4 +1,4 @@
-package com.amartgar.recipier.ui.dashboard
+package com.amartgar.recipier.ui.main.view.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.amartgar.recipier.R
+import com.amartgar.recipier.ui.main.viewmodel.DashboardViewModel
 
 class DashboardFragment : Fragment() {
 
