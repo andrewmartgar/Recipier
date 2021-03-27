@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.amartgar.recipier.R
-import com.amartgar.recipier.ui.main.viewmodel.NotificationsViewModel
+import com.amartgar.recipier.viewmodel.NotificationsViewModel
 
 class NotificationsFragment : Fragment() {
 

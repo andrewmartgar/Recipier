@@ -25,4 +25,13 @@
     <string name="cancel">CANCEL</string>
     <string name="you_got_gallery_permissions">You got Gallery permissions</string>
     <string name="permission_to_gallery_denied">You have denied the storage permission to select the image.</string>
+    <string name="select_an_option">SELECT AN OPTION</string>
+    <string name="add_recipe_form_error_picture">Oops, this recipe has no picture!</string>
+    <string name="add_recipe_form_error_title">Give a title to your recipe!</string>
+    <string name="add_recipe_form_error_type">Select this recipe type!</string>
+    <string name="add_recipe_form_error_category">Select this recipe category!</string>
+    <string name="add_recipe_form_error_ingredients">It\'s not a recipe if it hasn\'t some ingredients</string>
+    <string name="add_recipe_form_error_time">How long would it take to prepare it?</string>
+    <string name="add_recipe_form_error_directions">Give some instructions!</string>
+    <string name="recipe_data_recorded_to_database_success">You successfully added your recipe to your Recipier book!</string>
 </resources>

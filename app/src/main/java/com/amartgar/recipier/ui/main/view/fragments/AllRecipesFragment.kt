@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.amartgar.recipier.R
 import com.amartgar.recipier.databinding.FragmentAllRecipesBinding
 import com.amartgar.recipier.ui.main.view.activities.AddUpdateRecipeActivity
-import com.amartgar.recipier.ui.main.viewmodel.AllRecipesViewModel
+import com.amartgar.recipier.viewmodel.AllRecipesViewModel
 
 class AllRecipesFragment : Fragment() {
 
