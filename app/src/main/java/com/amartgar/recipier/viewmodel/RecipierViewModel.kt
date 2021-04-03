@@ -1,8 +1,6 @@
 package com.amartgar.recipier.viewmodel
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.amartgar.recipier.data.model.entities.Recipier
 import com.amartgar.recipier.data.repository.RecipierRepository
 import kotlinx.coroutines.launch
@@ -12,6 +10,8 @@ class RecipierViewModel(private val repository: RecipierRepository) : ViewModel(
     fun insert(recipe: Recipier) = viewModelScope.launch {
         repository.insertRecipeData(recipe)
     }
+
+    val allRecipesList: LiveData<List<Recipier>> = repository.allRecipesList.asLiveData()
 }
 
 class RecipierViewModelFactory(private val repository: RecipierRepository) :

@@ -1,9 +1,12 @@
 package com.amartgar.recipier.data.model.entities
 
+import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 @Entity(tableName = "recipes_table")
 data class Recipier(
         @ColumnInfo val image: String,
@@ -16,4 +19,4 @@ data class Recipier(
         @ColumnInfo(name = "instructions") val cookingDirection: String,
         @ColumnInfo(name = "favourite") val favoriteRecipe: Boolean = false,
         @PrimaryKey(autoGenerate = true) val id: Int = 0
-)
+): Parcelable

@@ -9,22 +9,22 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.amartgar.recipier.R
-import com.amartgar.recipier.viewmodel.DashboardViewModel
+import com.amartgar.recipier.viewmodel.RandomViewModel
 
-class DashboardFragment : Fragment() {
+class RandomFragment : Fragment() {
 
-    private lateinit var dashboardViewModel: DashboardViewModel
+    private lateinit var randomViewModel: RandomViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        dashboardViewModel =
-                ViewModelProvider(this).get(DashboardViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_dashboard, container, false)
-        val textView: TextView = root.findViewById(R.id.text_dashboard)
-        dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
+        randomViewModel =
+                ViewModelProvider(this).get(RandomViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_random, container, false)
+        val textView: TextView = root.findViewById(R.id.text_notifications)
+        randomViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root

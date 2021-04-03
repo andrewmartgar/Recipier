@@ -3,41 +3,58 @@ package com.amartgar.recipier.ui.main.view.fragments
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import com.amartgar.recipier.R
+import com.amartgar.recipier.application.RecipierApplication
+import com.amartgar.recipier.data.model.entities.Recipier
 import com.amartgar.recipier.databinding.FragmentAllRecipesBinding
+import com.amartgar.recipier.ui.main.adapter.ItemAllRecipesListAdapter
 import com.amartgar.recipier.ui.main.view.activities.AddUpdateRecipeActivity
-import com.amartgar.recipier.viewmodel.AllRecipesViewModel
+import com.amartgar.recipier.ui.main.view.activities.MainActivity
+import com.amartgar.recipier.viewmodel.RecipierViewModel
+import com.amartgar.recipier.viewmodel.RecipierViewModelFactory
 
 class AllRecipesFragment : Fragment() {
 
-    private lateinit var allRecipesViewModel: AllRecipesViewModel
+    private val mRecipierViewModel: RecipierViewModel by viewModels {
+        RecipierViewModelFactory((requireActivity().application as RecipierApplication).repository)
+    }
 
-    private var _mBinding : FragmentAllRecipesBinding? = null
+    private var _mBinding: FragmentAllRecipesBinding? = null
     private val mBinding get() = _mBinding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
     }
-    override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
-    ): View? {
-        _mBinding = FragmentAllRecipesBinding.inflate(inflater,container,false)
-        val view = mBinding.root
 
-        allRecipesViewModel =
-                ViewModelProvider(this).get(AllRecipesViewModel::class.java)
-        val textView: TextView = mBinding.textHome
-        allRecipesViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-        return view
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _mBinding = FragmentAllRecipesBinding.inflate(inflater, container, false)
+        return mBinding.root
+    }
+
+    fun recipeDetails(recipeDetails: Recipier) {
+        findNavController()
+            .navigate(AllRecipesFragmentDirections.navActionFromAllRecipesToRecipeDetails(recipeDetails))
+
+        if (requireActivity() is MainActivity) {
+            (activity as MainActivity?)!!.hideBottomNavigationView()
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (requireActivity() is MainActivity) {
+            (activity as MainActivity?)!!.showBottomNavigationView()
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -46,7 +63,7 @@ class AllRecipesFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
+        when (item.itemId) {
             R.id.action_add_recipe -> {
                 startActivity(Intent(requireActivity(), AddUpdateRecipeActivity::class.java))
                 return true
@@ -55,8 +72,32 @@ class AllRecipesFragment : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        mBinding.rvRecipeList.layoutManager = GridLayoutManager(requireActivity(), 2)
+        val adapter = ItemAllRecipesListAdapter(this)
+
+        mBinding.rvRecipeList.adapter = adapter
+
+        mRecipierViewModel.allRecipesList.observe(viewLifecycleOwner) { recipes ->
+            recipes.let {
+                if (it.isNotEmpty()) {
+                    mBinding.rvRecipeList.visibility = View.VISIBLE
+                    mBinding.tvNoDishesAddedYet.visibility = View.GONE
+
+                    adapter.recipeList(it)
+                } else {
+                    mBinding.rvRecipeList.visibility = View.GONE
+                    mBinding.tvNoDishesAddedYet.visibility = View.VISIBLE
+                }
+            }
+
+        }
+    }
+
     override fun onDestroyView() {
-          super.onDestroyView()
+        super.onDestroyView()
         _mBinding = null
     }
 }

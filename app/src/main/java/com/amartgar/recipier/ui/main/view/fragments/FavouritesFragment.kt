@@ -9,22 +9,22 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.amartgar.recipier.R
-import com.amartgar.recipier.viewmodel.NotificationsViewModel
+import com.amartgar.recipier.viewmodel.FavoritesViewModel
 
-class NotificationsFragment : Fragment() {
+class FavouritesFragment : Fragment() {
 
-    private lateinit var notificationsViewModel: NotificationsViewModel
+    private lateinit var favoritesViewModel: FavoritesViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        notificationsViewModel =
-                ViewModelProvider(this).get(NotificationsViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_notifications, container, false)
-        val textView: TextView = root.findViewById(R.id.text_notifications)
-        notificationsViewModel.text.observe(viewLifecycleOwner, Observer {
+        favoritesViewModel =
+                ViewModelProvider(this).get(FavoritesViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_favourites, container, false)
+        val textView: TextView = root.findViewById(R.id.text_dashboard)
+        favoritesViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root
