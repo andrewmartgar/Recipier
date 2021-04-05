@@ -24,6 +24,10 @@
     <dimen name="card_radius">5dp</dimen>
     <dimen name="card_elevation">5dp</dimen>
     <dimen name="card_image_height">120dp</dimen>
+    <dimen name="generic_half_margin">8dp</dimen>
+    <dimen name="tag_radius">30dp</dimen>
+    <dimen name="generic_half_padding">8dp</dimen>
+    <dimen name="recipe_image_height">300dp</dimen>
 
 
 </resources>

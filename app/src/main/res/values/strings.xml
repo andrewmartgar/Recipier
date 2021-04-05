@@ -37,4 +37,9 @@
     <string name="no_recipe_added_yet">You haven\'t added any recipe yet</string>
     <string name="image_of_this_recipe">Image of this recipe</string>
     <string name="title_recipe_details">Recipe Details</string>
+    <string name="step_by_step">Step by step</string>
+    <string name="description_clock_icon">Clock icon</string>
+    <string name="description_ingredients_icon">Ingredients icon</string>
+    <string name="description_instructions_icon">Instructions icon</string>
+    <string name="approx_cooking_time">Approx. cooking time:</string>
 </resources>

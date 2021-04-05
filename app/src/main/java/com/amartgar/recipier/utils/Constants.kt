@@ -10,16 +10,16 @@ object Constants {
 
     fun recipeTypes(): ArrayList<String>{
         val list = ArrayList<String>()
-        list.add("breakfast")
-        list.add("lunch")
-        list.add("dinner")
-        list.add("dessert")
-        list.add("cocktail")
-        list.add("snack")
-        list.add("bread")
-        list.add("sandwich")
-        list.add("side dish")
-        list.add("other")
+        list.add("Breakfast")
+        list.add("Lunch")
+        list.add("Dinner")
+        list.add("Dessert")
+        list.add("Cocktail")
+        list.add("Snack")
+        list.add("Bread")
+        list.add("Sandwich")
+        list.add("Side dish")
+        list.add("Other")
 
         return list
     }
