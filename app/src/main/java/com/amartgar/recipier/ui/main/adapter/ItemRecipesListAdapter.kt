@@ -7,10 +7,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.amartgar.recipier.data.model.entities.Recipier
 import com.amartgar.recipier.databinding.ItemAllRecipesListBinding
 import com.amartgar.recipier.ui.main.view.fragments.AllRecipesFragment
+import com.amartgar.recipier.ui.main.view.fragments.FavouritesFragment
 import com.bumptech.glide.Glide
 
-class ItemAllRecipesListAdapter(private val fragment: Fragment) :
-    RecyclerView.Adapter<ItemAllRecipesListAdapter.ViewHolder>() {
+class ItemRecipesListAdapter(private val fragment: Fragment) :
+    RecyclerView.Adapter<ItemRecipesListAdapter.ViewHolder>() {
 
     private var recipes: List<Recipier> = listOf()
 
@@ -23,14 +24,14 @@ class ItemAllRecipesListAdapter(private val fragment: Fragment) :
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): ItemAllRecipesListAdapter.ViewHolder {
+    ): ItemRecipesListAdapter.ViewHolder {
         val binding: ItemAllRecipesListBinding = ItemAllRecipesListBinding.inflate(
             LayoutInflater.from(fragment.context), parent, false
         )
         return ViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: ItemAllRecipesListAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ItemRecipesListAdapter.ViewHolder, position: Int) {
         val recipe = recipes[position]
         holder.tvRecipeTitle.text = recipe.title
         Glide.with(fragment)
@@ -39,6 +40,10 @@ class ItemAllRecipesListAdapter(private val fragment: Fragment) :
 
         holder.itemView.setOnClickListener {
             if (fragment is AllRecipesFragment) {
+                fragment.recipeDetails(recipe)
+            }
+
+            else if (fragment is FavouritesFragment) {
                 fragment.recipeDetails(recipe)
             }
         }

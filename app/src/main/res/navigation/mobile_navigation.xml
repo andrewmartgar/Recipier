@@ -19,7 +19,11 @@
         android:id="@+id/navigation_favourites"
         android:name="com.amartgar.recipier.ui.main.view.fragments.FavouritesFragment"
         android:label="@string/title_favourites"
-        tools:layout="@layout/fragment_favourites" />
+        tools:layout="@layout/fragment_favourites" >
+        <action
+            android:id="@+id/nav_action_from_favourites_to_recipe_details"
+            app:destination="@id/navigation_recipe_details" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_random"

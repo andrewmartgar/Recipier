@@ -5,14 +5,13 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.amartgar.recipier.R
 import com.amartgar.recipier.application.RecipierApplication
 import com.amartgar.recipier.data.model.entities.Recipier
 import com.amartgar.recipier.databinding.FragmentAllRecipesBinding
-import com.amartgar.recipier.ui.main.adapter.ItemAllRecipesListAdapter
+import com.amartgar.recipier.ui.main.adapter.ItemRecipesListAdapter
 import com.amartgar.recipier.ui.main.view.activities.AddUpdateRecipeActivity
 import com.amartgar.recipier.ui.main.view.activities.MainActivity
 import com.amartgar.recipier.viewmodel.RecipierViewModel
@@ -76,7 +75,7 @@ class AllRecipesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         mBinding.rvRecipeList.layoutManager = GridLayoutManager(requireActivity(), 2)
-        val adapter = ItemAllRecipesListAdapter(this)
+        val adapter = ItemRecipesListAdapter(this)
 
         mBinding.rvRecipeList.adapter = adapter
 

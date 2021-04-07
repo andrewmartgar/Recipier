@@ -7,14 +7,17 @@
     tools:context=".ui.main.view.fragments.RandomFragment">
 
     <TextView
-        android:id="@+id/text_notifications"
+        android:id="@+id/tv_no_dishes_added_yet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_margin="@dimen/generic_half_margin"
+        android:background="@drawable/tag_bg_00"
+        android:gravity="center"
+        android:padding="@dimen/generic_padding"
+        android:text="@string/random_recipe_screen_no_recipe_yet"
         android:textAlignment="center"
-        android:textSize="20sp"
+        android:textSize="@dimen/h5"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

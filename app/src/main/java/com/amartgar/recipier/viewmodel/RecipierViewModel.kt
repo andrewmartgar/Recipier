@@ -11,7 +11,13 @@ class RecipierViewModel(private val repository: RecipierRepository) : ViewModel(
         repository.insertRecipeData(recipe)
     }
 
+    fun update(recipe: Recipier) = viewModelScope.launch {
+        repository.updateRecipeData(recipe)
+    }
+
     val allRecipesList: LiveData<List<Recipier>> = repository.allRecipesList.asLiveData()
+
+    val allFavoritesList: LiveData<List<Recipier>> = repository.allFavoritesList.asLiveData()
 }
 
 class RecipierViewModelFactory(private val repository: RecipierRepository) :

@@ -34,7 +34,6 @@
     <string name="add_recipe_form_error_time">How long would it take to prepare it?</string>
     <string name="add_recipe_form_error_directions">Give some instructions!</string>
     <string name="recipe_data_recorded_to_database_success">You successfully added your recipe to your Recipier book!</string>
-    <string name="no_recipe_added_yet">You haven\'t added any recipe yet</string>
     <string name="image_of_this_recipe">Image of this recipe</string>
     <string name="title_recipe_details">Recipe Details</string>
     <string name="step_by_step">Step by step</string>
@@ -42,4 +41,9 @@
     <string name="description_ingredients_icon">Ingredients icon</string>
     <string name="description_instructions_icon">Instructions icon</string>
     <string name="approx_cooking_time">Approx. cooking time:</string>
+    <string name="removed_from_favorites_toast">This recipe has been removed from your favourites</string>
+    <string name="add_to_favorites_toast">This recipe is now a favorite!</string>
+    <string name="all_recipes_no_recipe_added_yet">You haven\'t added any recipe yet.\nAdd some by using the top right menu icon!</string>
+    <string name="favorite_recipe_screen_no_favorites_yet">You haven\'t selected any favorite recipe yet.\nAdd some today!</string>
+    <string name="random_recipe_screen_no_recipe_yet">A random recipe will show up here.\nCheck later!</string>
 </resources>

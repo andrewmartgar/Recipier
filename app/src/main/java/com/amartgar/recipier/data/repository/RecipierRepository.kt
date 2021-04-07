@@ -12,5 +12,12 @@ class RecipierRepository(private val mDao: RecipierDAO) {
         mDao.insertRecipeDetails(recipe)
     }
 
+    @WorkerThread
+    suspend fun updateRecipeData(recipe: Recipier) {
+        mDao.updateRecipeDetails(recipe)
+    }
+
     val allRecipesList: Flow<List<Recipier>> = mDao.getAllRecipesList()
+
+    val allFavoritesList: Flow<List<Recipier>> = mDao.getAllFavorites()
 }
