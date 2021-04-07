@@ -9,7 +9,7 @@
         android:id="@+id/navigation_all_recipes"
         android:name="com.amartgar.recipier.ui.main.view.fragments.AllRecipesFragment"
         android:label="@string/title_all_recipes"
-        tools:layout="@layout/fragment_all_recipes" >
+        tools:layout="@layout/fragment_all_recipes">
         <action
             android:id="@+id/nav_action_from_all_recipes_to_recipe_details"
             app:destination="@id/navigation_recipe_details" />
@@ -19,7 +19,7 @@
         android:id="@+id/navigation_favourites"
         android:name="com.amartgar.recipier.ui.main.view.fragments.FavouritesFragment"
         android:label="@string/title_favourites"
-        tools:layout="@layout/fragment_favourites" >
+        tools:layout="@layout/fragment_favourites">
         <action
             android:id="@+id/nav_action_from_favourites_to_recipe_details"
             app:destination="@id/navigation_recipe_details" />
@@ -35,7 +35,7 @@
         android:id="@+id/navigation_recipe_details"
         android:name="com.amartgar.recipier.ui.main.view.fragments.RecipeDetailsFragment"
         android:label="@string/title_recipe_details"
-        tools:layout="@layout/fragment_recipe_details" >
+        tools:layout="@layout/fragment_recipe_details">
         <argument
             android:name="recipe_details"
             app:argType="com.amartgar.recipier.data.model.entities.Recipier" />

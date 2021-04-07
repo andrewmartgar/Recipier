@@ -46,4 +46,6 @@
     <string name="all_recipes_no_recipe_added_yet">You haven\'t added any recipe yet.\nAdd some by using the top right menu icon!</string>
     <string name="favorite_recipe_screen_no_favorites_yet">You haven\'t selected any favorite recipe yet.\nAdd some today!</string>
     <string name="random_recipe_screen_no_recipe_yet">A random recipe will show up here.\nCheck later!</string>
+    <string name="add_recipe_icon">Add recipe icon</string>
+    <string name="add">Add</string>
 </resources>
