@@ -30,6 +30,7 @@ import com.amartgar.recipier.databinding.ActivityAddUpdateRecipeBinding
 import com.amartgar.recipier.databinding.DialogCustomImageSelectionBinding
 import com.amartgar.recipier.databinding.DialogCustomListBinding
 import com.amartgar.recipier.ui.main.adapter.ItemListAdapter
+import com.amartgar.recipier.ui.main.view.fragments.AllRecipesFragment
 import com.amartgar.recipier.utils.Constants
 import com.amartgar.recipier.viewmodel.RecipierViewModel
 import com.amartgar.recipier.viewmodel.RecipierViewModelFactory
@@ -72,12 +73,36 @@ class AddUpdateRecipeActivity : AppCompatActivity(), View.OnClickListener {
         RecipierViewModelFactory((application as RecipierApplication).repository)
     }
 
+    private var mRecipeDetails: Recipier? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = ActivityAddUpdateRecipeBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
 
+        if (intent.hasExtra(Constants.RECIPE_EXTRA_DETAILS)) {
+            mRecipeDetails = intent.getParcelableExtra(Constants.RECIPE_EXTRA_DETAILS)
+        }
+
         setupActionBar()
+
+        mRecipeDetails?.let {
+            if (it.id != 0) {
+                mImagePath = it.image
+                Glide.with(this)
+                    .load(mImagePath)
+                    .centerCrop()
+                    .into(mBinding.ivRecipePhotoMain)
+
+                mBinding.etAddRecipeTitle.setText(it.title)
+                mBinding.etAddRecipeType.setText(it.type)
+                mBinding.etAddRecipeCategory.setText(it.category)
+                mBinding.etAddRecipeIngredients.setText(it.ingredients)
+                mBinding.etAddRecipeCookingTime.setText(it.cookingTime)
+                mBinding.etAddRecipeDirection.setText(it.cookingDirection)
+                mBinding.btnAddRecipe.text = resources.getString(R.string.update_recipe_button_text)
+            }
+        }
 
         mBinding.ivAddRecipePhotoButton.setOnClickListener(this)
         mBinding.etAddRecipeType.setOnClickListener(this)
@@ -89,6 +114,16 @@ class AddUpdateRecipeActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun setupActionBar() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        if (mRecipeDetails != null && mRecipeDetails!!.id != 0) {
+            supportActionBar?.let {
+                it.title = resources.getString(R.string.edit_this_recipe)
+            }
+        } else {
+            supportActionBar?.let {
+                it.title = resources.getString(R.string.add_recipe_title)
+            }
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -206,25 +241,49 @@ class AddUpdateRecipeActivity : AppCompatActivity(), View.OnClickListener {
                             ).show()
                         }
                         else -> {
+                            var recipeID = 0
+                            var imageSource = Constants.RECIPE_IMAGE_SOURCE_LOCAL
+                            var favoriteRecipe = false
+
+                            mRecipeDetails?.let {
+                                if (it.id != 0) {
+                                    recipeID = it.id
+                                    imageSource = it.imageSource
+                                    favoriteRecipe = it.favoriteRecipe
+                                }
+                            }
+
                             val recipeDetails: Recipier = Recipier(
                                 mImagePath,
-                                Constants.RECIPE_IMAGE_SOURCE_LOCAL,
+                                imageSource,
                                 title,
                                 type,
                                 category,
                                 ingredients,
                                 cookingTime,
                                 cookingDirection,
-                                false
+                                favoriteRecipe,
+                                recipeID
                             )
 
-                            mRecipierViewModel.insert(recipeDetails)
-                            Toasty.success(
-                                this,
-                                getString(R.string.recipe_data_recorded_to_database_success),
-                                Toast.LENGTH_LONG
-                            ).show()
-                            Log.i("Insertion", "Success")
+                            if (recipeID == 0) {
+                                mRecipierViewModel.insert(recipeDetails)
+                                Toasty.success(
+                                    this,
+                                    getString(R.string.recipe_data_recorded_to_database_success),
+                                    Toast.LENGTH_LONG
+                                ).show()
+                                Log.i("Insertion", "Success")
+
+                            } else {
+                                mRecipierViewModel.update(recipeDetails)
+                                Toasty.success(
+                                    this,
+                                    getString(R.string.recipe_data_updated_in_database_success),
+                                    Toast.LENGTH_LONG
+                                ).show()
+                                Log.i("Update", "Success")
+                            }
                             finish()
                         }
                     }

@@ -7,6 +7,7 @@ object Constants {
     const val RECIPE_COOKING_TIME: String = "RecipeCookingTime"
     const val RECIPE_IMAGE_SOURCE_LOCAL: String = "Local"
     const val RECIPE_IMAGE_SOURCE_ONLINE: String = "Online"
+    const val RECIPE_EXTRA_DETAILS = "RecipeDetails"
 
     fun recipeTypes(): ArrayList<String>{
         val list = ArrayList<String>()

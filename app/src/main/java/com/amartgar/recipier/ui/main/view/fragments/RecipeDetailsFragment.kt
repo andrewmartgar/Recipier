@@ -1,5 +1,6 @@
 package com.amartgar.recipier.ui.main.view.fragments
 
+import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
@@ -16,7 +17,9 @@ import androidx.palette.graphics.Palette
 import com.amartgar.recipier.R
 import com.amartgar.recipier.application.RecipierApplication
 import com.amartgar.recipier.databinding.FragmentRecipeDetailsBinding
+import com.amartgar.recipier.ui.main.view.activities.AddUpdateRecipeActivity
 import com.amartgar.recipier.ui.main.view.activities.MainActivity
+import com.amartgar.recipier.utils.Constants
 import com.amartgar.recipier.viewmodel.RecipierViewModel
 import com.amartgar.recipier.viewmodel.RecipierViewModelFactory
 import com.bumptech.glide.Glide
@@ -115,6 +118,13 @@ class RecipeDetailsFragment : Fragment() {
 
             }
 
+        }
+
+        mBinding!!.tvEditThisRecipe.setOnClickListener {
+            val intent =
+                Intent(requireActivity(), AddUpdateRecipeActivity::class.java)
+            intent.putExtra(Constants.RECIPE_EXTRA_DETAILS, args.recipeDetails)
+            requireActivity().startActivity(intent)
         }
 
         mBinding!!.llFavouritesButton.setOnClickListener {

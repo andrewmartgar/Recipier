@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:layout_marginBottom="@dimen/generic_margin"
+        android:orientation="vertical"
         tools:context=".ui.main.view.fragments.RecipeDetailsFragment">
 
         <FrameLayout
@@ -43,7 +44,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/ic_add_to_favourites"
-                    android:contentDescription="@string/description_clock_icon" />
+                    android:contentDescription="@string/favorite_icon" />
 
             </LinearLayout>
 
@@ -224,5 +225,51 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/generic_margin"
+            android:layout_marginTop="@dimen/generic_double_margin"
+            android:layout_marginEnd="@dimen/generic_margin"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ll_recipe_directions">
+
+            <TextView
+                android:id="@+id/tv_delete_this_recipe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/delete_this_recipe"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/redPink"
+                android:textSize="@dimen/h5"
+                android:textStyle="bold" />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="?android:attr/listDivider" />
+
+            <TextView
+                android:id="@+id/tv_edit_this_recipe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/edit_this_recipe"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/primaryDarkColor"
+                android:textSize="@dimen/h5"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.core.widget.NestedScrollView>

@@ -28,6 +28,7 @@
     <dimen name="tag_radius">30dp</dimen>
     <dimen name="generic_half_padding">8dp</dimen>
     <dimen name="recipe_image_height">300dp</dimen>
+    <dimen name="generic_double_margin">32dp</dimen>
 
 
 </resources>
