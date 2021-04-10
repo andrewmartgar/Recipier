@@ -1,9 +1,6 @@
 package com.amartgar.recipier.data.model.database
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 import com.amartgar.recipier.data.model.entities.Recipier
 import kotlinx.coroutines.flow.Flow
 
@@ -21,4 +18,7 @@ interface RecipierDAO {
 
     @Query("SELECT * FROM RECIPES_TABLE WHERE favourite = 1")
     fun getAllFavorites(): Flow<List<Recipier>>
+
+    @Delete
+    suspend fun deleteRecipe(recipe: Recipier)
 }

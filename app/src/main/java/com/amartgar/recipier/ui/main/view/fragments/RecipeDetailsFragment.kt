@@ -20,6 +20,7 @@ import com.amartgar.recipier.databinding.FragmentRecipeDetailsBinding
 import com.amartgar.recipier.ui.main.view.activities.AddUpdateRecipeActivity
 import com.amartgar.recipier.ui.main.view.activities.MainActivity
 import com.amartgar.recipier.utils.Constants
+import com.amartgar.recipier.utils.DeleteRecipe
 import com.amartgar.recipier.viewmodel.RecipierViewModel
 import com.amartgar.recipier.viewmodel.RecipierViewModelFactory
 import com.bumptech.glide.Glide
@@ -125,6 +126,11 @@ class RecipeDetailsFragment : Fragment() {
                 Intent(requireActivity(), AddUpdateRecipeActivity::class.java)
             intent.putExtra(Constants.RECIPE_EXTRA_DETAILS, args.recipeDetails)
             requireActivity().startActivity(intent)
+        }
+
+        mBinding!!.tvDeleteThisRecipe.setOnClickListener {
+            val toDelete = DeleteRecipe(this, mRecipierViewModel)
+            toDelete.deleteThisRecipe(args.recipeDetails)
         }
 
         mBinding!!.llFavouritesButton.setOnClickListener {

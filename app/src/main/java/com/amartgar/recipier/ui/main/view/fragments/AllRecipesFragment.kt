@@ -14,6 +14,7 @@ import com.amartgar.recipier.databinding.FragmentAllRecipesBinding
 import com.amartgar.recipier.ui.main.adapter.ItemRecipesListAdapter
 import com.amartgar.recipier.ui.main.view.activities.AddUpdateRecipeActivity
 import com.amartgar.recipier.ui.main.view.activities.MainActivity
+import com.amartgar.recipier.utils.DeleteRecipe
 import com.amartgar.recipier.viewmodel.RecipierViewModel
 import com.amartgar.recipier.viewmodel.RecipierViewModelFactory
 
@@ -42,11 +43,20 @@ class AllRecipesFragment : Fragment() {
 
     fun recipeDetails(recipeDetails: Recipier) {
         findNavController()
-            .navigate(AllRecipesFragmentDirections.navActionFromAllRecipesToRecipeDetails(recipeDetails))
+            .navigate(
+                AllRecipesFragmentDirections.navActionFromAllRecipesToRecipeDetails(
+                    recipeDetails
+                )
+            )
 
         if (requireActivity() is MainActivity) {
             (activity as MainActivity?)!!.hideBottomNavigationView()
         }
+    }
+
+    fun deleteRecipe(recipe: Recipier) {
+        val delete = DeleteRecipe(this, mRecipierViewModel)
+        delete.deleteThisRecipe(recipe)
     }
 
     override fun onResume() {
@@ -95,7 +105,7 @@ class AllRecipesFragment : Fragment() {
         }
 
         mBinding.fabAddRecipe.setOnClickListener {
-                    startActivity(Intent(requireActivity(), AddUpdateRecipeActivity::class.java))
+            startActivity(Intent(requireActivity(), AddUpdateRecipeActivity::class.java))
         }
     }
 

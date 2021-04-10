@@ -71,6 +71,9 @@ class ItemRecipesListAdapter(private val fragment: Fragment) :
                     fragment.requireActivity().startActivity(intent)
 
                 } else if (it.itemId == R.id.action_delete_recipe) {
+                    if (fragment is AllRecipesFragment) {
+                        fragment.deleteRecipe(recipe)
+                    }
 
                 }
                 true

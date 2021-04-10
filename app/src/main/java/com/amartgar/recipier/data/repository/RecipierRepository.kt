@@ -17,6 +17,11 @@ class RecipierRepository(private val mDao: RecipierDAO) {
         mDao.updateRecipeDetails(recipe)
     }
 
+    @WorkerThread
+    suspend fun deleteRecipeData(recipe: Recipier) {
+        mDao.deleteRecipe(recipe)
+    }
+
     val allRecipesList: Flow<List<Recipier>> = mDao.getAllRecipesList()
 
     val allFavoritesList: Flow<List<Recipier>> = mDao.getAllFavorites()

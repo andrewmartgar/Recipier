@@ -121,7 +121,7 @@ class AddUpdateRecipeActivity : AppCompatActivity(), View.OnClickListener {
             }
         } else {
             supportActionBar?.let {
-                it.title = resources.getString(R.string.add_recipe_title)
+                it.title = resources.getString(R.string.add_a_new_recipe)
             }
         }
     }

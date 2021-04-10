@@ -15,9 +15,14 @@ class RecipierViewModel(private val repository: RecipierRepository) : ViewModel(
         repository.updateRecipeData(recipe)
     }
 
+    fun delete(recipe: Recipier) = viewModelScope.launch {
+        repository.deleteRecipeData(recipe)
+    }
+
     val allRecipesList: LiveData<List<Recipier>> = repository.allRecipesList.asLiveData()
 
     val allFavoritesList: LiveData<List<Recipier>> = repository.allFavoritesList.asLiveData()
+
 }
 
 class RecipierViewModelFactory(private val repository: RecipierRepository) :
