@@ -1,13 +1,10 @@
 package com.amartgar.recipier.utils
 
-import android.app.Activity
 import android.app.AlertDialog
-import android.content.Context
 import android.content.Intent
 import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import com.amartgar.recipier.R
 import com.amartgar.recipier.data.model.entities.Recipier
 import com.amartgar.recipier.ui.main.view.activities.MainActivity
@@ -25,14 +22,25 @@ class DeleteRecipe(
         val builder = AlertDialog.Builder(fragment.requireActivity())
         builder.setIcon(R.drawable.ic_alert)
         builder.setTitle(R.string.erase_recipe_dialog_title)
-        builder.setMessage(fragment.requireActivity().getString(R.string.erase_recipe_dialog_body_message))
-        builder.setPositiveButton(fragment.requireActivity().getString(R.string.erase_recipe_dialog_positive_button))
+        builder.setMessage(
+            fragment.requireActivity().getString(R.string.erase_recipe_dialog_body_message)
+        )
+        builder.setPositiveButton(
+            fragment.requireActivity().getString(R.string.erase_recipe_dialog_positive_button)
+        )
         { dialogInterface, _ ->
             val reBuilder = AlertDialog.Builder(fragment.requireActivity())
             reBuilder.setIcon(R.drawable.ic_alert)
-            reBuilder.setTitle(fragment.requireActivity().getString(R.string.erase_recipe_dialog_title))
-            reBuilder.setMessage(fragment.requireActivity().getString(R.string.erase_recipe_sub_dialog_body_message))
-            reBuilder.setPositiveButton(fragment.requireActivity().getString(R.string.erase_recipe_sub_dialog_positive_button))
+            reBuilder.setTitle(
+                fragment.requireActivity().getString(R.string.erase_recipe_dialog_title)
+            )
+            reBuilder.setMessage(
+                fragment.requireActivity().getString(R.string.erase_recipe_sub_dialog_body_message)
+            )
+            reBuilder.setPositiveButton(
+                fragment.requireActivity()
+                    .getString(R.string.erase_recipe_sub_dialog_positive_button)
+            )
             { subDialogInterface, _ ->
                 viewModel.delete(recipe)
                 Toasty.info(
@@ -52,7 +60,10 @@ class DeleteRecipe(
                     startActivity(fragment.requireActivity(), intent, null)
                 }
             }
-            reBuilder.setNegativeButton(fragment.requireActivity().getString(R.string.erase_recipe_sub_dialog_negative_button))
+            reBuilder.setNegativeButton(
+                fragment.requireActivity()
+                    .getString(R.string.erase_recipe_sub_dialog_negative_button)
+            )
             { subDialogInterface, _ ->
                 subDialogInterface.dismiss()
                 dialogInterface.dismiss()
@@ -61,7 +72,9 @@ class DeleteRecipe(
             subAlertDialog.setCancelable(false)
             subAlertDialog.show()
         }
-        builder.setNegativeButton(fragment.requireActivity().getString(R.string.erase_recipe_dialog_negative_button))
+        builder.setNegativeButton(
+            fragment.requireActivity().getString(R.string.erase_recipe_dialog_negative_button)
+        )
         { dialogInterface, _ ->
             dialogInterface.dismiss()
         }

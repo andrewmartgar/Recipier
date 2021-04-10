@@ -54,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|end"
                 android:alpha="0.9"
-                android:background="@color/primaryDarkColor"
+                android:background="@color/white"
                 android:padding="@dimen/generic_padding"
                 android:text=""
                 android:textAllCaps="true"

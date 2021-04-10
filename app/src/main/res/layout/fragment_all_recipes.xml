@@ -6,45 +6,56 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.view.fragments.AllRecipesFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_recipe_list"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_no_dishes_added_yet"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/cl_fab_add_recipe"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/generic_half_margin"
-        android:background="@drawable/tag_bg_00"
-        android:gravity="center"
-        android:padding="@dimen/generic_padding"
-        android:text="@string/all_recipes_no_recipe_added_yet"
-        android:textAlignment="center"
-        android:textSize="@dimen/h5"
-        android:visibility="gone"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_add_recipe"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end|center"
-        android:layout_margin="@dimen/generic_margin"
-        android:contentDescription="@string/add_recipe_icon"
-        android:src="@drawable/ic_add_recipe"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.900" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_recipe_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_no_dishes_added_yet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/generic_half_margin"
+            android:background="@drawable/tag_bg_00"
+            android:gravity="center"
+            android:padding="@dimen/generic_padding"
+            android:text="@string/all_recipes_no_recipe_added_yet"
+            android:textAlignment="center"
+            android:textSize="@dimen/h5"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_add_recipe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:layout_margin="@dimen/generic_margin"
+            android:contentDescription="@string/add_recipe_icon"
+            android:src="@drawable/ic_add_recipe"
+            app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

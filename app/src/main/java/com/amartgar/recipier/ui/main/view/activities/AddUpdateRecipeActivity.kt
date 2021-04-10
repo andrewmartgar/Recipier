@@ -30,7 +30,6 @@ import com.amartgar.recipier.databinding.ActivityAddUpdateRecipeBinding
 import com.amartgar.recipier.databinding.DialogCustomImageSelectionBinding
 import com.amartgar.recipier.databinding.DialogCustomListBinding
 import com.amartgar.recipier.ui.main.adapter.ItemListAdapter
-import com.amartgar.recipier.ui.main.view.fragments.AllRecipesFragment
 import com.amartgar.recipier.utils.Constants
 import com.amartgar.recipier.viewmodel.RecipierViewModel
 import com.amartgar.recipier.viewmodel.RecipierViewModelFactory
@@ -101,6 +100,9 @@ class AddUpdateRecipeActivity : AppCompatActivity(), View.OnClickListener {
                 mBinding.etAddRecipeCookingTime.setText(it.cookingTime)
                 mBinding.etAddRecipeDirection.setText(it.cookingDirection)
                 mBinding.btnAddRecipe.text = resources.getString(R.string.update_recipe_button_text)
+                mBinding.ivAddRecipePhotoButton.setImageDrawable(
+                    ContextCompat.getDrawable(this, R.drawable.ic_edit)
+                )
             }
         }
 

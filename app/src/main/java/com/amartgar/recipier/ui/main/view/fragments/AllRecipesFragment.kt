@@ -107,6 +107,7 @@ class AllRecipesFragment : Fragment() {
         mBinding.fabAddRecipe.setOnClickListener {
             startActivity(Intent(requireActivity(), AddUpdateRecipeActivity::class.java))
         }
+
     }
 
     override fun onDestroyView() {
