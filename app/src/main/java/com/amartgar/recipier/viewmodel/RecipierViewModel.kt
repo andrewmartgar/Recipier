@@ -23,6 +23,9 @@ class RecipierViewModel(private val repository: RecipierRepository) : ViewModel(
 
     val allFavoritesList: LiveData<List<Recipier>> = repository.allFavoritesList.asLiveData()
 
+    fun getFilteredCategoryList(value: String): LiveData<List<Recipier>> =
+        repository.filteredCategoryList(value).asLiveData()
+
 }
 
 class RecipierViewModelFactory(private val repository: RecipierRepository) :

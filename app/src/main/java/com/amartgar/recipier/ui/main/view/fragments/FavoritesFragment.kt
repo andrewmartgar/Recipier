@@ -1,27 +1,28 @@
 package com.amartgar.recipier.ui.main.view.fragments
 
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import com.amartgar.recipier.R
 import com.amartgar.recipier.application.RecipierApplication
 import com.amartgar.recipier.data.model.entities.Recipier
-import com.amartgar.recipier.databinding.FragmentFavouritesBinding
+import com.amartgar.recipier.databinding.FragmentFavoritesBinding
 import com.amartgar.recipier.ui.main.adapter.ItemRecipesListAdapter
 import com.amartgar.recipier.ui.main.view.activities.MainActivity
 import com.amartgar.recipier.viewmodel.RecipierViewModel
 import com.amartgar.recipier.viewmodel.RecipierViewModelFactory
 
-class FavouritesFragment : Fragment() {
+class FavoritesFragment : Fragment() {
 
     private val mRecipierViewModel: RecipierViewModel by viewModels {
         RecipierViewModelFactory((requireActivity().application as RecipierApplication).repository)
     }
 
-    private var _mBinding: FragmentFavouritesBinding? = null
+    private var _mBinding: FragmentFavoritesBinding? = null
     private val mBinding get() = _mBinding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,14 +35,14 @@ class FavouritesFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _mBinding = FragmentFavouritesBinding.inflate(inflater, container, false)
+        _mBinding = FragmentFavoritesBinding.inflate(inflater, container, false)
         return mBinding.root
     }
 
     fun recipeDetails(recipeDetails: Recipier) {
         findNavController()
             .navigate(
-                FavouritesFragmentDirections.navActionFromFavouritesToRecipeDetails(
+                FavoritesFragmentDirections.navActionFromFavoritesToRecipeDetails(
                     recipeDetails
                 )
             )

@@ -3,13 +3,16 @@ package com.amartgar.recipier.ui.main.adapter
 import android.app.Activity
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.amartgar.recipier.databinding.ItemListBinding
 import com.amartgar.recipier.ui.main.view.activities.AddUpdateRecipeActivity
+import com.amartgar.recipier.ui.main.view.fragments.AllRecipesFragment
 
 class ItemListAdapter(
     private val activity: Activity,
     private val listItems: List<String>,
+    private val fragment: Fragment?,
     private val selection: String
 ) : RecyclerView.Adapter<ItemListAdapter.ViewHolder>() {
 
@@ -30,6 +33,16 @@ class ItemListAdapter(
         holder.itemView.setOnClickListener {
             if (activity is AddUpdateRecipeActivity) {
                 activity.selectedOption(item, selection)
+            }
+            if (fragment is AllRecipesFragment) {
+
+                val filter = fragment.mFilterRecipeList
+                filter.filterSelection(
+                    item,
+                    fragment.mBinding.rvRecipeList,
+                    fragment.mBinding.llNoDishesAddedYet,
+                    fragment.mBinding.llNoFilterResults
+                )
             }
         }
     }

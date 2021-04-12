@@ -12,7 +12,7 @@ import com.amartgar.recipier.ui.main.view.fragments.RecipeDetailsFragment
 import com.amartgar.recipier.viewmodel.RecipierViewModel
 import es.dmoral.toasty.Toasty
 
-class DeleteRecipe(
+class   DeleteRecipe(
     private val fragment: Fragment,
     private val viewModel: RecipierViewModel
 ) {

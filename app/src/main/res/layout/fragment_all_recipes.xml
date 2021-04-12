@@ -9,7 +9,8 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/cl_fab_add_recipe"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,24 +26,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tv_no_dishes_added_yet"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/generic_half_margin"
-            android:background="@drawable/tag_bg_00"
-            android:gravity="center"
-            android:padding="@dimen/generic_padding"
-            android:text="@string/all_recipes_no_recipe_added_yet"
-            android:textAlignment="center"
-            android:textSize="@dimen/h5"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_add_recipe"
             android:layout_width="wrap_content"
@@ -57,5 +40,71 @@
             app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_no_dishes_added_yet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/generic_half_margin"
+        android:background="@drawable/tag_bg_00"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/generic_padding"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible">
+
+        <TextView
+            android:id="@+id/tv_no_dishes_added_yet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/all_recipes_no_recipe_added_yet"
+            android:textAlignment="center"
+            android:textSize="@dimen/h5" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_50sdp"
+            android:contentDescription="@string/arrow_pointing_down_icon"
+            android:src="@drawable/ic_arrow_down" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_no_filter_results"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/generic_half_margin"
+        android:background="@drawable/tag_bg_00"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/generic_padding"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible">
+
+        <TextView
+            android:id="@+id/tv_no_filter_results"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/all_recipes_no_recipes_filter_result"
+            android:textAlignment="center"
+            android:textSize="@dimen/h5" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_50sdp"
+            android:contentDescription="@string/arrow_pointing_down_icon"
+            android:src="@drawable/ic_arrow_down" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

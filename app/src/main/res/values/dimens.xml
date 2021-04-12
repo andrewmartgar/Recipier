@@ -12,7 +12,7 @@
     <dimen name="h4">20sp</dimen>
     <dimen name="h5">16sp</dimen>
     <dimen name="h6">10sp</dimen>
-    <dimen name="paragraph">12sp</dimen>
+    <dimen name="paragraph">14sp</dimen>
     <dimen name="edit_view_hint">12sp</dimen>
 
     <!--  Text fields  -->

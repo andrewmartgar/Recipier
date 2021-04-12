@@ -7,9 +7,9 @@
         android:title="@string/title_all_recipes" />
 
     <item
-        android:id="@+id/navigation_favourites"
+        android:id="@+id/navigation_favorites"
         android:icon="@drawable/ic_favorite"
-        android:title="@string/title_favourites" />
+        android:title="@string/title_favorites" />
 
     <item
         android:id="@+id/navigation_random"

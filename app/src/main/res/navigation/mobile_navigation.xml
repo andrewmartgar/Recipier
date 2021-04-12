@@ -16,12 +16,12 @@
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_favourites"
-        android:name="com.amartgar.recipier.ui.main.view.fragments.FavouritesFragment"
-        android:label="@string/title_favourites"
-        tools:layout="@layout/fragment_favourites">
+        android:id="@+id/navigation_favorites"
+        android:name="com.amartgar.recipier.ui.main.view.fragments.FavoritesFragment"
+        android:label="@string/title_favorites"
+        tools:layout="@layout/fragment_favorites">
         <action
-            android:id="@+id/nav_action_from_favourites_to_recipe_details"
+            android:id="@+id/nav_action_from_favorites_to_recipe_details"
             app:destination="@id/navigation_recipe_details" />
     </fragment>
 

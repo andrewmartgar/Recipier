@@ -67,7 +67,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:inputType="text"
-                    android:textSize="@dimen/edit_view_hint" />
+                    android:textSize="@dimen/paragraph" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -92,7 +92,7 @@
                     android:focusable="false"
                     android:focusableInTouchMode="false"
                     android:inputType="text"
-                    android:textSize="@dimen/edit_view_hint" />
+                    android:textSize="@dimen/paragraph" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -117,7 +117,7 @@
                     android:focusable="false"
                     android:focusableInTouchMode="false"
                     android:inputType="text"
-                    android:textSize="@dimen/edit_view_hint" />
+                    android:textSize="@dimen/paragraph" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -140,12 +140,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="top"
-                    android:inputType="textMultiLine"
+                    android:inputType="textMultiLine|textCapSentences"
                     android:overScrollMode="always"
                     android:scrollbarFadeDuration="2000"
                     android:scrollbarStyle="insideInset"
                     android:scrollbars="vertical"
-                    android:textSize="@dimen/edit_view_hint" />
+                    android:textSize="@dimen/paragraph" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -170,7 +170,7 @@
                     android:focusable="false"
                     android:focusableInTouchMode="false"
                     android:inputType="number"
-                    android:textSize="@dimen/edit_view_hint" />
+                    android:textSize="@dimen/paragraph" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -193,12 +193,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="top"
-                    android:inputType="textMultiLine"
+                    android:inputType="textMultiLine|textCapSentences"
                     android:overScrollMode="always"
                     android:scrollbarFadeDuration="2000"
                     android:scrollbarStyle="insideInset"
                     android:scrollbars="vertical"
-                    android:textSize="@dimen/edit_view_hint" />
+                    android:textSize="@dimen/paragraph" />
 
             </com.google.android.material.textfield.TextInputLayout>
 

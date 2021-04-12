@@ -12,8 +12,9 @@ import com.amartgar.recipier.data.model.entities.Recipier
 import com.amartgar.recipier.databinding.ItemAllRecipesListBinding
 import com.amartgar.recipier.ui.main.view.activities.AddUpdateRecipeActivity
 import com.amartgar.recipier.ui.main.view.fragments.AllRecipesFragment
-import com.amartgar.recipier.ui.main.view.fragments.FavouritesFragment
+import com.amartgar.recipier.ui.main.view.fragments.FavoritesFragment
 import com.amartgar.recipier.utils.Constants
+import com.amartgar.recipier.utils.DeleteRecipe
 import com.bumptech.glide.Glide
 
 class ItemRecipesListAdapter(private val fragment: Fragment) :
@@ -32,7 +33,7 @@ class ItemRecipesListAdapter(private val fragment: Fragment) :
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): ItemRecipesListAdapter.ViewHolder {
+    ): ViewHolder {
         val binding: ItemAllRecipesListBinding = ItemAllRecipesListBinding.inflate(
             LayoutInflater.from(fragment.context), parent, false
         )
@@ -71,9 +72,8 @@ class ItemRecipesListAdapter(private val fragment: Fragment) :
 
                 } else if (it.itemId == R.id.action_delete_recipe) {
                     if (fragment is AllRecipesFragment) {
-                        fragment.deleteRecipe(recipe)
+                        DeleteRecipe(fragment, fragment.mRecipierViewModel).deleteThisRecipe(recipe)
                     }
-
                 }
                 true
             }
@@ -88,7 +88,7 @@ class ItemRecipesListAdapter(private val fragment: Fragment) :
         holder.itemView.setOnClickListener {
             if (fragment is AllRecipesFragment) {
                 fragment.recipeDetails(recipe)
-            } else if (fragment is FavouritesFragment) {
+            } else if (fragment is FavoritesFragment) {
                 fragment.recipeDetails(recipe)
             }
         }

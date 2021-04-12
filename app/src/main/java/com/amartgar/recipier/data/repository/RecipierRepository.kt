@@ -25,4 +25,6 @@ class RecipierRepository(private val mDao: RecipierDAO) {
     val allRecipesList: Flow<List<Recipier>> = mDao.getAllRecipesList()
 
     val allFavoritesList: Flow<List<Recipier>> = mDao.getAllFavorites()
+
+    fun filteredCategoryList(value: String): Flow<List<Recipier>> = mDao.getFilteredCategory(value)
 }

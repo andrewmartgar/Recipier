@@ -6,26 +6,26 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
 import com.amartgar.recipier.R
 import com.amartgar.recipier.application.RecipierApplication
 import com.amartgar.recipier.data.model.entities.Recipier
 import com.amartgar.recipier.databinding.FragmentAllRecipesBinding
-import com.amartgar.recipier.ui.main.adapter.ItemRecipesListAdapter
 import com.amartgar.recipier.ui.main.view.activities.AddUpdateRecipeActivity
 import com.amartgar.recipier.ui.main.view.activities.MainActivity
-import com.amartgar.recipier.utils.DeleteRecipe
+import com.amartgar.recipier.utils.Constants
+import com.amartgar.recipier.utils.FilterRecipeList
 import com.amartgar.recipier.viewmodel.RecipierViewModel
 import com.amartgar.recipier.viewmodel.RecipierViewModelFactory
 
 class AllRecipesFragment : Fragment() {
 
-    private val mRecipierViewModel: RecipierViewModel by viewModels {
+    val mRecipierViewModel: RecipierViewModel by viewModels {
         RecipierViewModelFactory((requireActivity().application as RecipierApplication).repository)
     }
-
     private var _mBinding: FragmentAllRecipesBinding? = null
-    private val mBinding get() = _mBinding!!
+    val mBinding get() = _mBinding!!
+
+    lateinit var mFilterRecipeList: FilterRecipeList
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,11 +54,6 @@ class AllRecipesFragment : Fragment() {
         }
     }
 
-    fun deleteRecipe(recipe: Recipier) {
-        val delete = DeleteRecipe(this, mRecipierViewModel)
-        delete.deleteThisRecipe(recipe)
-    }
-
     override fun onResume() {
         super.onResume()
         if (requireActivity() is MainActivity) {
@@ -77,37 +72,27 @@ class AllRecipesFragment : Fragment() {
                 startActivity(Intent(requireActivity(), AddUpdateRecipeActivity::class.java))
                 return true
             }
+            R.id.action_filter -> {
+                mFilterRecipeList.filterHere()
+                return true
+            }
         }
         return super.onOptionsItemSelected(item)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        mBinding.rvRecipeList.layoutManager = GridLayoutManager(requireActivity(), 2)
-        val adapter = ItemRecipesListAdapter(this)
-
-        mBinding.rvRecipeList.adapter = adapter
-
-        mRecipierViewModel.allRecipesList.observe(viewLifecycleOwner) { recipes ->
-            recipes.let {
-                if (it.isNotEmpty()) {
-                    mBinding.rvRecipeList.visibility = View.VISIBLE
-                    mBinding.tvNoDishesAddedYet.visibility = View.GONE
-
-                    adapter.recipeList(it)
-                } else {
-                    mBinding.rvRecipeList.visibility = View.GONE
-                    mBinding.tvNoDishesAddedYet.visibility = View.VISIBLE
-                }
-            }
-
-        }
+        mFilterRecipeList = FilterRecipeList(this, mRecipierViewModel)
+        mFilterRecipeList.filterSelection(
+            Constants.ALL_ITEMS,
+            mBinding.rvRecipeList,
+            mBinding.llNoDishesAddedYet,
+            mBinding.llNoFilterResults
+        )
 
         mBinding.fabAddRecipe.setOnClickListener {
             startActivity(Intent(requireActivity(), AddUpdateRecipeActivity::class.java))
         }
-
     }
 
     override fun onDestroyView() {

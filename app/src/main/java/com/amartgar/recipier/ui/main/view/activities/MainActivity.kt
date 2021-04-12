@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_all_recipes,
-                R.id.navigation_favourites,
+                R.id.navigation_favorites,
                 R.id.navigation_random
             )
         )

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Recipier</string>
     <string name="title_all_recipes">Recipes</string>
-    <string name="title_favourites">Favourites</string>
+    <string name="title_favorites">Favorites</string>
     <string name="title_random">Random</string>
     <string name="recipier">Recipier</string>
     <string name="logo_description">Recipier logo</string>
@@ -27,6 +27,7 @@
     <string name="you_got_gallery_permissions">You got Gallery permissions</string>
     <string name="permission_to_gallery_denied">You have denied the storage permission to select the image.</string>
     <string name="select_an_option">SELECT AN OPTION</string>
+    <string name="filter_options_title">FILTER YOUR RECIPES BY</string>
     <string name="add_recipe_form_error_picture">Oops, this recipe has no picture!</string>
     <string name="add_recipe_form_error_title">Give a title to your recipe!</string>
     <string name="add_recipe_form_error_type">Select this recipe type!</string>
@@ -43,9 +44,10 @@
     <string name="description_ingredients_icon">Ingredients icon</string>
     <string name="description_instructions_icon">Instructions icon</string>
     <string name="approx_cooking_time">Approx. cooking time:</string>
-    <string name="removed_from_favorites_toast">This recipe has been removed from your favourites</string>
+    <string name="removed_from_favorites_toast">This recipe has been removed from your favorites</string>
     <string name="add_to_favorites_toast">This recipe is now a favorite!</string>
-    <string name="all_recipes_no_recipe_added_yet">You haven\'t added any recipe yet.\nAdd some by using the top right menu icon!</string>
+    <string name="all_recipes_no_recipe_added_yet">You haven\'t added any recipe yet.\n\nAdd some now by tapping the button below!</string>
+    <string name="all_recipes_no_recipes_filter_result">Oops, it seems you don\'t have any recipe that matches that filter in your Recipier Book.\n\nBut you can add your first one now!</string>
     <string name="favorite_recipe_screen_no_favorites_yet">You haven\'t selected any favorite recipe yet.\nAdd some today!</string>
     <string name="random_recipe_screen_no_recipe_yet">A random recipe will show up here.\nCheck later!</string>
     <string name="add_recipe_icon">Add recipe icon</string>
@@ -54,11 +56,13 @@
     <string name="edit_this_recipe">Edit this recipe</string>
     <string name="delete_this_recipe">Delete recipe</string>
     <string name="erase_recipe_dialog_title">ERASE RECIPE?</string>
-    <string name="erase_recipe_dialog_body_message">Are you sure you want to delete this recipe?</string>
-    <string name="erase_recipe_sub_dialog_body_message">Are you REALLY, REALLY sure you want to delete this recipe? This cannot be undo</string>
+    <string name="erase_recipe_dialog_body_message">This recipe will be erased.\nAre you sure you want to proceed?</string>
+    <string name="erase_recipe_sub_dialog_body_message">Are you REALLY, REALLY sure you want to delete this recipe? This cannot be undone</string>
     <string name="erase_recipe_dialog_positive_button">YES, SURE</string>
     <string name="erase_recipe_dialog_negative_button">NO</string>
     <string name="erase_recipe_sub_dialog_positive_button">YES, REALLY SURE</string>
     <string name="erase_recipe_sub_dialog_negative_button">NO, WAIT</string>
-    <string name="recipe_erased_toast">Your recipe has been erased</string>
+    <string name="recipe_erased_toast">This recipe has been erased</string>
+    <string name="filter">Filter</string>
+    <string name="arrow_pointing_down_icon">Arrow pointing down icon</string>
 </resources>

@@ -63,7 +63,6 @@ class AddUpdateRecipeActivity : AppCompatActivity(), View.OnClickListener {
         private const val IMAGE_DIRECTORY = "RecipierImages"
     }
 
-
     private lateinit var mBinding: ActivityAddUpdateRecipeBinding
     private lateinit var mCustomDialog: Dialog
     private var mImagePath: String = ""
@@ -255,7 +254,7 @@ class AddUpdateRecipeActivity : AppCompatActivity(), View.OnClickListener {
                                 }
                             }
 
-                            val recipeDetails: Recipier = Recipier(
+                            val recipeDetails = Recipier(
                                 mImagePath,
                                 imageSource,
                                 title,
@@ -307,7 +306,7 @@ class AddUpdateRecipeActivity : AppCompatActivity(), View.OnClickListener {
 
         oBinding.rvDialogCustomList.layoutManager = LinearLayoutManager(this)
 
-        val adapter = ItemListAdapter(this, listOptions, selection)
+        val adapter = ItemListAdapter(this, listOptions, null, selection)
         oBinding.rvDialogCustomList.adapter = adapter
 
         mCustomDialog.show()
