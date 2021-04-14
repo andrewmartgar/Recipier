@@ -12,11 +12,10 @@ import com.amartgar.recipier.ui.main.adapter.ItemListAdapter
 import com.amartgar.recipier.ui.main.adapter.ItemRecipesListAdapter
 import com.amartgar.recipier.viewmodel.RecipierViewModel
 
-class FilterRecipeList(context: Fragment, viewModel: RecipierViewModel) {
+class DataFilterer(context: Fragment) {
 
     private val mContext = context
     private val mCustomListDialog = Dialog(context.requireActivity())
-    private val mViewModel = viewModel
 
     fun filterHere() {
         val mBinding: DialogCustomListBinding =
@@ -43,6 +42,7 @@ class FilterRecipeList(context: Fragment, viewModel: RecipierViewModel) {
 
     fun filterSelection(
         filterItemSelection: String,
+        viewModel: RecipierViewModel,
         recyclerView: RecyclerView,
         noRecipesView: View,
         noFilterResult: View
@@ -56,30 +56,34 @@ class FilterRecipeList(context: Fragment, viewModel: RecipierViewModel) {
         recyclerView.adapter = adapter
 
         if (filterItemSelection == Constants.ALL_ITEMS) {
-            mViewModel.allRecipesList.observe(mContext.viewLifecycleOwner) { recipes ->
+            viewModel.allRecipesList.observe(mContext.viewLifecycleOwner) { recipes ->
                 recipes.let {
                     if (it.isNotEmpty()) {
                         recyclerView.visibility = View.VISIBLE
                         noRecipesView.visibility = View.GONE
+                        noFilterResult.visibility = View.GONE
 
                         adapter.recipeList(it)
                     } else {
                         recyclerView.visibility = View.GONE
                         noRecipesView.visibility = View.VISIBLE
+                        noFilterResult.visibility = View.GONE
                     }
                 }
             }
         } else {
-            mViewModel.getFilteredCategoryList(filterItemSelection)
+            viewModel.getFilteredCategoryList(filterItemSelection)
                 .observe(mContext.viewLifecycleOwner) { recipes ->
                     recipes.let {
                         if (it.isNotEmpty()) {
                             recyclerView.visibility = View.VISIBLE
+                            noRecipesView.visibility = View.GONE
                             noFilterResult.visibility = View.GONE
 
                             adapter.recipeList(it)
                         } else {
                             recyclerView.visibility = View.GONE
+                            noRecipesView.visibility = View.GONE
                             noFilterResult.visibility = View.VISIBLE
                         }
                     }

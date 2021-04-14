@@ -36,9 +36,10 @@ class ItemListAdapter(
             }
             if (fragment is AllRecipesFragment) {
 
-                val filter = fragment.mFilterRecipeList
+                val filter = fragment.mDataFilterer
                 filter.filterSelection(
                     item,
+                    fragment.mRecipierViewModel,
                     fragment.mBinding.rvRecipeList,
                     fragment.mBinding.llNoDishesAddedYet,
                     fragment.mBinding.llNoFilterResults

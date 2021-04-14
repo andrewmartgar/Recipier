@@ -6,61 +6,65 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
+import androidx.lifecycle.ViewModelProvider
 import com.amartgar.recipier.application.RecipierApplication
-import com.amartgar.recipier.data.model.entities.Recipier
 import com.amartgar.recipier.databinding.FragmentRandomBinding
-import com.amartgar.recipier.ui.main.view.activities.MainActivity
+import com.amartgar.recipier.utils.FragmentToPopulate
+import com.amartgar.recipier.viewmodel.RandomRecipeViewModel
 import com.amartgar.recipier.viewmodel.RecipierViewModel
 import com.amartgar.recipier.viewmodel.RecipierViewModelFactory
 
 class RandomFragment : Fragment() {
 
-    private val mRecipierViewModel: RecipierViewModel by viewModels {
-        RecipierViewModelFactory((requireActivity().application as RecipierApplication).repository)
-    }
+    private lateinit var mRandomRecipeViewModel: RandomRecipeViewModel
 
     private var _mBinding: FragmentRandomBinding? = null
-    private val mBinding get() = _mBinding!!
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
-    }
+    val mBinding get() = _mBinding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _mBinding = FragmentRandomBinding.inflate(inflater, container, false)
         return mBinding.root
-    }
-
-    fun recipeDetails(recipeDetails: Recipier) {
-        findNavController()
-            .navigate(
-                FavoritesFragmentDirections.navActionFromFavoritesToRecipeDetails(
-                    recipeDetails
-                )
-            )
-
-        if (requireActivity() is MainActivity) {
-            (activity as MainActivity?)!!.hideBottomNavigationView()
-        }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        if (requireActivity() is MainActivity) {
-            (activity as MainActivity?)!!.showBottomNavigationView()
-        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        mBinding.tvNoDishesAddedYet.visibility = View.VISIBLE
+        val data = FragmentToPopulate(
+            this,
+            mBinding.ivRecipeImage,
+            mBinding.tvRecipeTitle,
+            mBinding.tvRecipeTypeTag,
+            mBinding.tvRecipeCategoryTag,
+            mBinding.tvRecipeTime,
+            mBinding.tvRecipeIngredientsText,
+            mBinding.tvRecipeDirectionsText,
+            mBinding.llSaveRecipeTop,
+            mBinding.llSaveRecipeBottom,
+            null
+        )
+
+        val mRecipierViewModel: RecipierViewModel by viewModels {
+            RecipierViewModelFactory(
+                (requireActivity().application as RecipierApplication).repository
+            )
+        }
+
+        mRandomRecipeViewModel = ViewModelProvider(this)
+            .get(RandomRecipeViewModel()::class.java)
+
+        mRandomRecipeViewModel.getRandomRecipe()
+
+        mBinding.rlRefreshRandomRecipe.setOnRefreshListener {
+            mRandomRecipeViewModel.getRandomRecipe()
+        }
+
+        mRandomRecipeViewModel.randomRecipeViewModelObserver(
+            viewLifecycleOwner, data, mRecipierViewModel
+        )
     }
 
     override fun onDestroyView() {

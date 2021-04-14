@@ -13,7 +13,7 @@ import com.amartgar.recipier.databinding.FragmentAllRecipesBinding
 import com.amartgar.recipier.ui.main.view.activities.AddUpdateRecipeActivity
 import com.amartgar.recipier.ui.main.view.activities.MainActivity
 import com.amartgar.recipier.utils.Constants
-import com.amartgar.recipier.utils.FilterRecipeList
+import com.amartgar.recipier.utils.DataFilterer
 import com.amartgar.recipier.viewmodel.RecipierViewModel
 import com.amartgar.recipier.viewmodel.RecipierViewModelFactory
 
@@ -25,7 +25,7 @@ class AllRecipesFragment : Fragment() {
     private var _mBinding: FragmentAllRecipesBinding? = null
     val mBinding get() = _mBinding!!
 
-    lateinit var mFilterRecipeList: FilterRecipeList
+    lateinit var mDataFilterer: DataFilterer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +36,7 @@ class AllRecipesFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _mBinding = FragmentAllRecipesBinding.inflate(inflater, container, false)
         return mBinding.root
     }
@@ -73,7 +73,7 @@ class AllRecipesFragment : Fragment() {
                 return true
             }
             R.id.action_filter -> {
-                mFilterRecipeList.filterHere()
+                mDataFilterer.filterHere()
                 return true
             }
         }
@@ -82,9 +82,10 @@ class AllRecipesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mFilterRecipeList = FilterRecipeList(this, mRecipierViewModel)
-        mFilterRecipeList.filterSelection(
+        mDataFilterer = DataFilterer(this)
+        mDataFilterer.filterSelection(
             Constants.ALL_ITEMS,
+            mRecipierViewModel,
             mBinding.rvRecipeList,
             mBinding.llNoDishesAddedYet,
             mBinding.llNoFilterResults

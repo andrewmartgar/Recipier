@@ -63,6 +63,10 @@
     <string name="erase_recipe_sub_dialog_positive_button">YES, REALLY SURE</string>
     <string name="erase_recipe_sub_dialog_negative_button">NO, WAIT</string>
     <string name="recipe_erased_toast">This recipe has been erased</string>
+    <string name="recipe_saved_toast">This recipe has been saved to your Recipier book!</string>
     <string name="filter">Filter</string>
     <string name="arrow_pointing_down_icon">Arrow pointing down icon</string>
+    <string name="other_tag">Other</string>
+    <string name="save_this_recipe">Save this recipe</string>
+    <string name="you_have_this_recipe">You already have this recipe!</string>
 </resources>

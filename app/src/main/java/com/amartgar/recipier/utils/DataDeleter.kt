@@ -12,13 +12,9 @@ import com.amartgar.recipier.ui.main.view.fragments.RecipeDetailsFragment
 import com.amartgar.recipier.viewmodel.RecipierViewModel
 import es.dmoral.toasty.Toasty
 
-class   DeleteRecipe(
-    private val fragment: Fragment,
-    private val viewModel: RecipierViewModel
-) {
+class DataDeleter(private val fragment: Fragment) {
 
-
-    fun deleteThisRecipe(recipe: Recipier) {
+    fun deleteThisRecipe(recipe: Recipier, viewModel: RecipierViewModel) {
         val builder = AlertDialog.Builder(fragment.requireActivity())
         builder.setIcon(R.drawable.ic_alert)
         builder.setTitle(R.string.erase_recipe_dialog_title)

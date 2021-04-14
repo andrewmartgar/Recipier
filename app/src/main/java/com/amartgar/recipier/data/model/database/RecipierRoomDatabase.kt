@@ -7,11 +7,11 @@ import androidx.room.RoomDatabase
 import com.amartgar.recipier.data.model.entities.Recipier
 
 @Database(entities = [Recipier::class], version = 1)
-public abstract class RecipierRoomDatabase: RoomDatabase() {
+public abstract class RecipierRoomDatabase : RoomDatabase() {
 
     abstract fun mDAO(): RecipierDAO
 
-    companion object{
+    companion object {
         @Volatile
         private var INSTANCE: RecipierRoomDatabase? = null
 

@@ -1,25 +1,267 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_refresh_random_recipe"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.main.view.fragments.RandomFragment">
+    android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/tv_no_dishes_added_yet"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/generic_half_margin"
-        android:background="@drawable/tag_bg_00"
-        android:gravity="center"
-        android:padding="@dimen/generic_padding"
-        android:text="@string/random_recipe_screen_no_recipe_yet"
-        android:textAlignment="center"
-        android:textSize="@dimen/h5"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/generic_margin"
+            android:orientation="vertical"
+            tools:context=".ui.main.view.fragments.RecipeDetailsFragment">
+
+            <FrameLayout
+                android:id="@+id/fl_recipe_image_and_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0">
+
+                <ImageView
+                    android:id="@+id/iv_recipe_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/recipe_image_height"
+                    android:contentDescription="@string/image_of_this_recipe"
+                    tools:background="@color/primaryLightColor" />
+
+                <LinearLayout
+                    android:id="@+id/ll_save_recipe_top"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|end"
+                    android:background="@color/redPink"
+                    android:paddingStart="@dimen/generic_padding"
+                    android:paddingTop="@dimen/generic_half_padding"
+                    android:paddingEnd="@dimen/generic_padding"
+                    android:paddingBottom="@dimen/generic_half_padding">
+
+                    <TextView
+                        android:id="@+id/iv_save_recipe_top"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/save_this_recipe"
+                        android:textAllCaps="true"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_recipe_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:alpha="0.9"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:padding="@dimen/generic_padding"
+                    android:text=""
+                    android:textAllCaps="true"
+                    android:textSize="@dimen/h5"
+                    android:textStyle="bold"
+                    tools:text="@string/image_of_this_recipe" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_tags"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/generic_margin"
+                android:layout_marginTop="@dimen/generic_margin"
+                android:layout_marginEnd="@dimen/generic_margin"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fl_recipe_image_and_title">
+
+                <TextView
+                    android:id="@+id/tv_recipe_category_tag"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/generic_half_margin"
+                    android:layout_weight="1"
+                    android:background="@drawable/tag_bg_00"
+                    android:gravity="center"
+                    android:text=""
+                    android:textSize="@dimen/h5"
+                    tools:text="Category of this recipe" />
+
+                <TextView
+                    android:id="@+id/tv_recipe_type_tag"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/generic_half_margin"
+                    android:layout_weight="1"
+                    android:background="@drawable/tag_bg_00"
+                    android:gravity="center"
+                    android:text=""
+                    android:textSize="@dimen/h5"
+                    tools:text="Type of this recipe" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_recipe_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/generic_margin"
+                android:layout_marginTop="@dimen/generic_margin"
+                android:layout_marginEnd="@dimen/generic_margin"
+                android:background="@drawable/tag_bg_01"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ll_tags">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/generic_margin"
+                    android:layout_marginEnd="@dimen/generic_margin"
+                    android:background="@drawable/ic_time"
+                    android:contentDescription="@string/description_clock_icon" />
+
+                <TextView
+                    android:id="@+id/tv_recipe_time_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/approx_cooking_time"
+                    android:textSize="@dimen/h5" />
+
+                <TextView
+                    android:id="@+id/tv_recipe_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/generic_half_margin"
+                    android:text=""
+                    android:textSize="@dimen/h5"
+                    tools:text="more than 180 min" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_recipe_ingredients"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/generic_margin"
+                android:layout_marginTop="@dimen/generic_margin"
+                android:layout_marginEnd="@dimen/generic_margin"
+                android:background="@drawable/tag_bg_01"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ll_recipe_time">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_ingredients"
+                    android:contentDescription="@string/description_ingredients_icon" />
+
+                <TextView
+                    android:id="@+id/tv_recipe_ingredients_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/add_recipe_ingredients"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/h5"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_recipe_ingredients_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/generic_margin"
+                    android:text=""
+                    android:textSize="@dimen/h5"
+                    tools:text="Ingredients here..." />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_recipe_directions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/generic_margin"
+                android:layout_marginTop="@dimen/generic_margin"
+                android:layout_marginEnd="@dimen/generic_margin"
+                android:background="@drawable/tag_bg_01"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ll_recipe_ingredients">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_directions"
+                    android:contentDescription="@string/description_instructions_icon" />
+
+                <TextView
+                    android:id="@+id/tv_recipe_directions_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/step_by_step"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/h5"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_recipe_directions_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/generic_margin"
+                    android:text=""
+                    android:textSize="@dimen/h5"
+                    tools:text="Directions here..." />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_save_recipe_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/generic_margin"
+                android:layout_marginTop="@dimen/generic_double_margin"
+                android:layout_marginEnd="@dimen/generic_margin"
+                android:layout_marginBottom="@dimen/generic_margin"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ll_recipe_directions">
+
+                <TextView
+                    android:id="@+id/iv_save_recipe_bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/save_this_recipe"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="@color/redPink"
+                    android:textSize="@dimen/h5"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

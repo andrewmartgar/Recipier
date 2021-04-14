@@ -19,4 +19,4 @@ data class Recipier(
     @ColumnInfo(name = "instructions") val cookingDirection: String,
     @ColumnInfo(name = "favourite") var favoriteRecipe: Boolean = false,
     @PrimaryKey(autoGenerate = true) val id: Int = 0
-): Parcelable
+) : Parcelable

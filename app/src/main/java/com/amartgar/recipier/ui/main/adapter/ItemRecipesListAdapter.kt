@@ -14,7 +14,7 @@ import com.amartgar.recipier.ui.main.view.activities.AddUpdateRecipeActivity
 import com.amartgar.recipier.ui.main.view.fragments.AllRecipesFragment
 import com.amartgar.recipier.ui.main.view.fragments.FavoritesFragment
 import com.amartgar.recipier.utils.Constants
-import com.amartgar.recipier.utils.DeleteRecipe
+import com.amartgar.recipier.utils.DataDeleter
 import com.bumptech.glide.Glide
 
 class ItemRecipesListAdapter(private val fragment: Fragment) :
@@ -28,7 +28,6 @@ class ItemRecipesListAdapter(private val fragment: Fragment) :
         val llRecipeFavorite = view.llFavourites
         val ivMore = view.ivMore
     }
-
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -72,7 +71,7 @@ class ItemRecipesListAdapter(private val fragment: Fragment) :
 
                 } else if (it.itemId == R.id.action_delete_recipe) {
                     if (fragment is AllRecipesFragment) {
-                        DeleteRecipe(fragment, fragment.mRecipierViewModel).deleteThisRecipe(recipe)
+                        DataDeleter(fragment).deleteThisRecipe(recipe, fragment.mRecipierViewModel)
                     }
                 }
                 true

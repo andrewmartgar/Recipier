@@ -278,6 +278,13 @@ class AddUpdateRecipeActivity : AppCompatActivity(), View.OnClickListener {
 
                             } else {
                                 mRecipierViewModel.update(recipeDetails)
+                                val intent = Intent(this, MainActivity::class.java)
+                                intent.setFlags(
+                                    Intent.FLAG_ACTIVITY_NEW_TASK
+                                            or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                            or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                )
+                                startActivity(intent)
                                 Toasty.success(
                                     this,
                                     getString(R.string.recipe_data_updated_in_database_success),
