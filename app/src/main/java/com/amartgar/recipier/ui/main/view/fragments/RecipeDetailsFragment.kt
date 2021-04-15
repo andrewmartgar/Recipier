@@ -1,6 +1,7 @@
 package com.amartgar.recipier.ui.main.view.fragments
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.text.Html
@@ -53,6 +54,7 @@ class RecipeDetailsFragment : Fragment() {
                     var image = ""
                     if (it.imageSource == Constants.RECIPE_IMAGE_SOURCE_ONLINE) {
                         image = it.image
+
                     }
 
                     var cookingDirections = ""
@@ -67,13 +69,14 @@ class RecipeDetailsFragment : Fragment() {
                     }
 
                     extraText =
-                        "$image \n\n " +
-                                "Title: ${it.title} \n\n " +
-                                "Type: ${it.type} \n\n " +
-                                "Category: ${it.category} \n\n " +
-                                "Ingredients: ${it.ingredients} \n\n " +
-                                "Instructions to cook: $cookingDirections \n\n " +
-                                "Aprox. cooking time: ${it.cookingTime} \n\n "
+                                "◆ Title: ${it.title} \n\n" +
+                                "◆ Type: ${it.type} \n\n" +
+                                "◆ Category: ${it.category} \n\n" +
+                                "◆ Aprox. cooking time: ${it.cookingTime} \n\n" +
+                                "◆ Ingredients ➤ \n${it.ingredients} \n\n" +
+                                "◆ Instructions to cook ➤ \n$cookingDirections \n\n" +
+                                "◆ See the picture here ➤ \n$image"
+
                 }
 
                 val intent = Intent(Intent.ACTION_SEND)

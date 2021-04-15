@@ -70,4 +70,7 @@
     <string name="save_this_recipe">Save this recipe</string>
     <string name="you_have_this_recipe">You already have this recipe!</string>
     <string name="share">SHARE</string>
+    <string name="notify_work">Recipier Notify Work</string>
+    <string name="notification_title_new_recipe">Check out this new recipe!</string>
+    <string name="notification_subtitle">Tap for more details</string>
 </resources>

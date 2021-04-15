@@ -23,6 +23,11 @@ object Constants {
     const val API_NUMBER: String = "number"
     const val API_NUMBER_VALUE: Int = 1
 
+    //Notifications
+    const val NOTIFICATION_ID = "Recipier_notification_id"
+    const val NOTIFICATION_NAME = "Recipier"
+    const val NOTIFICATION_CHANNEL = "Recipier_channel_01"
+
     fun recipeTypes(): ArrayList<String> {
         val list = ArrayList<String>()
         list.add("breakfast")

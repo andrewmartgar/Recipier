@@ -35,6 +35,13 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(mNavController, appBarConfiguration)
         mBinding.navView.setupWithNavController(mNavController)
 
+        // Activate for notifications on WorkerManager every 15 minutes
+//        if (intent.hasExtra(Constants.NOTIFICATION_ID)) {
+//            val notificationId = intent.getIntExtra(Constants.NOTIFICATION_ID, 0)
+//            mBinding.navView.selectedItemId = R.id.navigation_random
+//        }
+//
+//        WorkManagerShooter().startWork(this)
     }
 
     override fun onSupportNavigateUp(): Boolean {
