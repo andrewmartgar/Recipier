@@ -17,6 +17,8 @@ import java.util.*
 
 class DataLoader(val data: FragmentToPopulate) {
 
+    private var mRecipeDetails: Recipier? = null
+
     fun loadRandomRecipeIntoUI(recipe: RandomRecipier.Recipe?, viewModel: RecipierViewModel) {
         recipe?.let {
             Glide.with(data.fragment.requireActivity())
@@ -111,32 +113,13 @@ class DataLoader(val data: FragmentToPopulate) {
             )
 
             data.saveTop?.setOnClickListener {
-                if (IdChecker().internalIdList.contains(internalId)) {
-                    Toasty.info(
-                        data.fragment.requireActivity(),
-                        data.fragment.getString(R.string.you_have_this_recipe),
-                        Toast.LENGTH_LONG
-                    ).show()
-                } else {
-                    IdChecker().internalIdList.add(internalId)
-                    DataSaver(data).saveAndGo(randomRecipeDetails, viewModel)
-                }
+                DataSaver(data).saveAndGo(randomRecipeDetails, viewModel)
             }
 
             data.saveBottom?.setOnClickListener {
-                if (IdChecker().internalIdList.contains(internalId)) {
-                    Toasty.info(
-                        data.fragment.requireActivity(),
-                        data.fragment.getString(R.string.you_have_this_recipe),
-                        Toast.LENGTH_LONG
-                    ).show()
-                } else {
-                    IdChecker().internalIdList.add(internalId)
-                    DataSaver(data).saveAndGo(randomRecipeDetails, viewModel)
-                }
+                DataSaver(data).saveAndGo(randomRecipeDetails, viewModel)
             }
         }
-
 
     }
 

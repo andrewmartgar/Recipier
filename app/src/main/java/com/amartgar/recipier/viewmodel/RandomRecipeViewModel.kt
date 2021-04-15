@@ -38,6 +38,13 @@ class RandomRecipeViewModel : ViewModel() {
             { dataError ->
                 dataError?.let {
                     Log.e("Random Recipe API Error", "$dataError")
+
+                    if (data.fragment is RandomFragment) {
+                        val fragment = data.fragment
+                        if (fragment.mBinding.rlRefreshRandomRecipe.isRefreshing) {
+                            fragment.mBinding.rlRefreshRandomRecipe.isRefreshing = false
+                        }
+                    }
                 }
             })
 
@@ -45,6 +52,7 @@ class RandomRecipeViewModel : ViewModel() {
             { loadRandomRecipe ->
                 loadRandomRecipe?.let {
                     Log.e("Random Recipe Loading", "$loadRandomRecipe")
+
                 }
             }
         )

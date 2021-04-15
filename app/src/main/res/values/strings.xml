@@ -69,4 +69,5 @@
     <string name="other_tag">Other</string>
     <string name="save_this_recipe">Save this recipe</string>
     <string name="you_have_this_recipe">You already have this recipe!</string>
+    <string name="share">SHARE</string>
 </resources>
