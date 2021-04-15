@@ -50,11 +50,11 @@ class NotifyWorker(context: Context, workerParams: WorkerParameters) :
             NotificationCompat.Builder(applicationContext, Constants.NOTIFICATION_CHANNEL)
                 .setContentTitle(notificationTitle)
                 .setContentText(notificationSubtitle)
-                .setSmallIcon(R.drawable.ic_notification)
-                .setLargeIcon(image)
+                .setSmallIcon(R.drawable.ic_all_recipes)
+                //.setLargeIcon(image)
                 .setDefaults(NotificationCompat.DEFAULT_ALL)
                 .setContentIntent(pendingIntent)
-                .setStyle(notificationImage)
+                //.setStyle(notificationImage)
                 .setAutoCancel(true)
 
         notification.priority = NotificationCompat.PRIORITY_MAX
